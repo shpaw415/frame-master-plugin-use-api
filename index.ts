@@ -7,6 +7,7 @@ import { isDev } from "frame-master/utils";
 type useApiPluginOptions = {
   basePath: string;
   onError?: (err: Error, master: masterRequest) => void | Promise<void>;
+  onMethodNotAllowed?: (master: masterRequest) => void | Promise<void>;
 };
 
 const APIMethods = [
@@ -64,7 +65,13 @@ export default function useaApiPlugin(
           const method = master.request.method.toUpperCase() as APIMethod;
           const handler = mod[method];
           if (!handler) {
-            master.setResponse("Method Not Allowed", { status: 405 });
+            if (!opt.onMethodNotAllowed) {
+              master.setResponse("Method Not Allowed", { status: 405 });
+              return;
+            }
+            await opt.onMethodNotAllowed?.(master);
+            if (!master.isResponseSetted())
+              master.setResponse("Method Not Allowed", { status: 405 });
             return;
           }
           await handler(master);
