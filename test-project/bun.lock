@@ -6,7 +6,7 @@
       "name": "test-project",
       "dependencies": {
         "frame-master": "^3.0.1",
-        "frame-master-plugin-use-api": "link:frame-master-plugin-use-api",
+        "frame-master-plugin-use-api": "https://github.com/shpaw415/frame-master-plugin-use-api.git",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -35,7 +35,7 @@
 
     "frame-master": ["frame-master@3.0.1", "", { "dependencies": { "@shpaw415/webtoken": "^2.0.0", "chalk": "^5.6.2", "commander": "^14.0.2", "prompts": "^2.4.2", "react": "^19.0.0", "react-dom": "^19.0.0", "tar": "^7.5.2" }, "peerDependencies": { "typescript": "^5.9.3" }, "bin": { "frame-master": "bin/index.ts" } }, "sha512-dm/L9Q8D401FJaiBAoGPd2LHlo+ee3HhirHZzd2pKrZsO5RWKVkGsvDT6xL+N7y5U/XXvLyWCXClEWnQW93Jzw=="],
 
-    "frame-master-plugin-use-api": ["frame-master-plugin-use-api@link:frame-master-plugin-use-api", {}],
+    "frame-master-plugin-use-api": ["frame-master-plugin-use-api@github:shpaw415/frame-master-plugin-use-api#f5a98eb", { "peerDependencies": { "frame-master": "^3.0.1", "typescript": "^5.9.3" } }, "shpaw415-frame-master-plugin-use-api-f5a98eb"],
 
     "kleur": ["kleur@3.0.3", "", {}, "sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w=="],
 

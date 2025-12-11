@@ -51,18 +51,12 @@ export default function useaApiPlugin(
       request: async (master) => {
         if (master.isResponseSetted()) return;
         const route = fileSystemRouter.match(master.request.url);
-
-        console.log("Matched route:", route);
-
         if (!route) return;
 
         const isApi = await directiveToolSingleton.pathIs(
           "use-api" as any,
           route.filePath
         );
-
-        console.log("isApi:", isApi, directiveToolSingleton);
-
         if (!isApi) return;
 
         try {
@@ -73,6 +67,7 @@ export default function useaApiPlugin(
             master.setResponse("Method Not Allowed", { status: 405 });
             return;
           }
+          await handler(master);
         } catch (err) {
           if (!opt.onError) throw err;
           await opt.onError?.(err as Error, master);
