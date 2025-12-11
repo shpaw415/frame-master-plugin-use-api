@@ -1,0 +1,13 @@
+{
+  "name": "frame-master-plugin-use-api",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.ts",
+  "peerDependencies": {
+    "frame-master": "^3.0.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
